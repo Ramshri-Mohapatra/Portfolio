@@ -27,3 +27,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# tooling & source material — not part of the published site
+/.agents/
+/skills-lock.json
+/PRD.md
+/LinkedInProfile.pdf
