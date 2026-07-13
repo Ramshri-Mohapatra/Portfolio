@@ -1,6 +1,11 @@
 // Single source of truth for all site content.
 // Cards, timeline and copy render from this data — no duplicated markup.
 
+// Prefix for files in /public when deployed under a subpath (e.g. a GitHub
+// project page at /Portfolio). Next only auto-prefixes its own /_next assets,
+// so public-folder references (CV, screenshots) must add this themselves.
+const base = process.env.NEXT_PUBLIC_BASE_PATH || "";
+
 export const site = {
   name: "Ramshri Mohapatra",
   role: "Data Analyst & Engineer",
@@ -8,7 +13,7 @@ export const site = {
   email: "rskissan1729@gmail.com",
   github: "https://github.com/Ramshri-Mohapatra",
   linkedin: "https://www.linkedin.com/in/ramshri-mohapatra",
-  cv: "/CV.pdf",
+  cv: `${base}/CV.pdf`,
   domain: "ramshri.dev",
   // The spine sentence — his own words, lightly trimmed.
   tagline:
@@ -58,7 +63,7 @@ export const featuredProjects: Project[] = [
     stack: ["FastAPI", "PostgreSQL", "SQLAlchemy", "Alembic", "JWT", "Docker", "CI/CD"],
     live: "https://fintech-api-production-bbd9.up.railway.app/docs",
     code: "https://github.com/Ramshri-Mohapatra/fintech-api",
-    image: "/fintechapi.png",
+    image: `${base}/fintechapi.png`,
   },
   {
     id: "trading-system",
@@ -78,7 +83,7 @@ export const featuredProjects: Project[] = [
     stack: ["Python", "pandas", "NumPy", "yfinance", "Plotly", "Streamlit"],
     live: "https://trading-system-fegxbv3zb27sfbncazbvuu.streamlit.app/",
     code: "https://github.com/Ramshri-Mohapatra/trading-system",
-    image: "/backtester.png",
+    image: `${base}/backtester.png`,
   },
   {
     id: "vigil-ai",
@@ -97,7 +102,7 @@ export const featuredProjects: Project[] = [
     stack: ["Python", "DeBERTa v3", "HuggingFace", "MongoDB", "GCP", "Streamlit"],
     live: "https://ai-powered-osint-tool-ega8iyln9qhy2rapdg6z6k.streamlit.app/",
     code: "https://github.com/Ramshri-Mohapatra/AI-Powered-OSINT-Tool",
-    image: "/vigilai.png",
+    image: `${base}/vigilai.png`,
   },
 ];
 

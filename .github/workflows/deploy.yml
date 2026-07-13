@@ -34,10 +34,10 @@ jobs:
 
       - name: Build static site
         run: npm run build
-        # Custom domain (ramshri.dev) → no base path. If you deploy to a
-        # project page instead, set: NEXT_PUBLIC_BASE_PATH: /<repo-name>
+        # Deployed as a GitHub project page at /Portfolio. If you later move to
+        # a custom domain served at the root, set this back to "".
         env:
-          NEXT_PUBLIC_BASE_PATH: ""
+          NEXT_PUBLIC_BASE_PATH: "/Portfolio"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
