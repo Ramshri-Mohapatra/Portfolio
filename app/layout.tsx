@@ -26,21 +26,22 @@ const mono = JetBrains_Mono({
 
 const title = `${site.name} · ${site.role}, London`;
 const description =
-  "I turn messy, real-world data into decisions people can act on: pipelines, dashboards and models, all live and inspectable. Open to data roles.";
+  "I turn messy, real-world data into decisions people can act on: pipelines, dashboards and models, all live and inspectable. Open to Data Analyst roles.";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(`https://${site.domain}`),
+  // Origin only — Next appends basePath itself when resolving the OG image.
+  metadataBase: new URL(site.origin),
   title,
   description,
   authors: [{ name: site.name }],
   keywords: [
     "Data Analyst",
-    "Data Engineer",
+    "Data Analytics",
     "London",
     "Python",
     "SQL",
+    "Power BI",
     "ETL",
-    "FastAPI",
     "Machine Learning",
     site.name,
   ],
@@ -48,13 +49,19 @@ export const metadata: Metadata = {
     title,
     description,
     type: "website",
-    url: `https://${site.domain}`,
+    url: `${site.url}/`,
     siteName: site.name,
+    // Declared explicitly rather than left to the opengraph-image file
+    // convention: that convention emits an extensionless file, which GitHub
+    // Pages serves as application/octet-stream, and crawlers won't render it.
+    // scripts/rename-og.mjs gives the same bytes a .png extension after build.
+    images: [{ url: `${site.url}/og.png`, width: 1200, height: 630, alt: `${site.name} — ${site.role}` }],
   },
   twitter: {
     card: "summary_large_image",
     title,
     description,
+    images: [`${site.url}/og.png`],
   },
   robots: { index: true, follow: true },
 };
@@ -66,7 +73,7 @@ const personSchema = {
   jobTitle: site.role,
   address: { "@type": "PostalAddress", addressLocality: "London", addressCountry: "UK" },
   email: `mailto:${site.email}`,
-  url: `https://${site.domain}`,
+  url: `${site.url}/`,
   sameAs: [site.github, site.linkedin],
 };
 

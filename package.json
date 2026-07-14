@@ -2,12 +2,13 @@
   "name": "ramshri-portfolio",
   "version": "1.0.0",
   "private": true,
-  "description": "Personal portfolio for Ramshri Mohapatra — Data Analyst & Engineer.",
+  "description": "Personal portfolio for Ramshri Mohapatra — Data Analyst.",
   "scripts": {
     "dev": "next dev",
     "cv": "node scripts/generate-cv.mjs",
     "prebuild": "node scripts/generate-cv.mjs",
     "build": "next build",
+    "postbuild": "node scripts/rename-og.mjs",
     "start": "next start",
     "lint": "next lint"
   },

@@ -39,7 +39,7 @@ function bullet(text) {
 
 // ---- Header ----
 doc.font("Helvetica-Bold").fontSize(22).fillColor(INK).text("Ramshri Mohapatra");
-doc.font("Helvetica").fontSize(10).fillColor(ACCENT).text("Data Analyst & Engineer");
+doc.font("Helvetica").fontSize(10).fillColor(ACCENT).text("Data Analyst");
 doc.font("Helvetica").fontSize(9).fillColor(MUTED)
   .text("London, UK  |  +44 7833 889303  |  rskissan1729@gmail.com", { lineGap: 1 })
   .text("github.com/Ramshri-Mohapatra  |  linkedin.com/in/ramshri-mohapatra");

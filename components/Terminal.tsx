@@ -8,8 +8,8 @@ const COMMAND = "whoami";
 // The "output" of whoami — a compact profile card.
 const lines: { k?: string; v: string; accent?: boolean }[] = [
   { v: "Ramshri Mohapatra", accent: true },
-  { v: "Data Analyst & Engineer · London, UK" },
-  { k: "status", v: "open to full-time roles" },
+  { v: "Data Analyst · London, UK" },
+  { k: "status", v: "open to data analyst roles" },
   { k: "shipped", v: "5 projects, all live" },
   { k: "paper", v: "1 accepted, Springer pending" },
   { k: "degree", v: "BSc Computer Science, First Class" },

@@ -1,8 +1,10 @@
-# ramshri.dev — portfolio
+# portfolio
 
-Personal portfolio for **Ramshri Mohapatra** — Data Analyst & Engineer, London.
-Built to the spec in [`PRD.md`](./PRD.md). Dark / technical aesthetic, warm
-first-person voice, terminal motif. Next.js static export → GitHub Pages.
+Personal portfolio for **Ramshri Mohapatra** — Data Analyst, London.
+Dark / technical aesthetic, warm first-person voice, terminal motif.
+Next.js static export → GitHub Pages.
+
+Live: <https://ramshri-mohapatra.github.io/Portfolio/>
 
 ## Stack
 - **Next.js 15** (App Router, `output: 'export'` static site)
@@ -33,16 +35,19 @@ The static site is written to `./out`.
 1. Push to `main`. The workflow in `.github/workflows/deploy.yml` builds and
    publishes automatically.
 2. In the repo: **Settings → Pages → Build and deployment → Source = GitHub Actions**.
-3. **Custom domain (`ramshri.dev`):** the `public/CNAME` file is already set.
-   Add DNS records at your registrar:
-   - Apex `A` records → `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
-   - (or a `CNAME` on `www` → `ramshri-mohapatra.github.io`)
-   Then enable **Enforce HTTPS** in Settings → Pages.
 
-### Deploying to a project page instead (username.github.io/&lt;repo&gt;)
-If you don't use the custom domain, set the base path so assets resolve:
-- Edit `.github/workflows/deploy.yml` → `NEXT_PUBLIC_BASE_PATH: "/<repo-name>"`
-- Delete `public/CNAME`.
+It deploys as a **project page**, so the site is served under `/Portfolio`.
+That subpath is set by `NEXT_PUBLIC_BASE_PATH` in the workflow, and everything
+in `/public` (CV, screenshots) is prefixed with it in `lib/content.ts` — Next
+only auto-prefixes its own `/_next` assets.
+
+### Moving to a custom domain later
+Three things must change together, or the metadata will advertise a URL the
+site isn't served from:
+- `.github/workflows/deploy.yml` → `NEXT_PUBLIC_BASE_PATH: ""`
+- `lib/content.ts` → `origin` = the new domain
+- add `public/CNAME` containing the domain, point DNS at GitHub's apex `A`
+  records (`185.199.108-111.153`), then enable **Enforce HTTPS**.
 
 ## Update the CV
 Edit `scripts/generate-cv.mjs` (mirrors `CV.md`) and run `npm run cv`.

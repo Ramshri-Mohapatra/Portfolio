@@ -1,15 +1,15 @@
 import { ImageResponse } from "next/og";
 import { site } from "@/lib/content";
 
-export const alt = `${site.name} — ${site.role}`;
-export const size = { width: 1200, height: 630 };
-export const contentType = "image/png";
-
-// Required for `output: export` — emit a single static PNG at build time.
+// Deliberately NOT app/opengraph-image.tsx. That file convention emits an
+// extensionless asset and hard-overrides the og:image meta tag to point at it —
+// and GitHub Pages serves extensionless files as application/octet-stream, so
+// no crawler renders it. As a plain static route the bytes still get generated
+// at build time, scripts/rename-og.mjs gives them a .png name, and the meta tag
+// in app/layout.tsx stays ours.
 export const dynamic = "force-static";
 
-// Generated at build time (static export) into /opengraph-image.png.
-export default function OGImage() {
+export function GET() {
   return new ImageResponse(
     (
       <div
@@ -25,7 +25,6 @@ export default function OGImage() {
           fontFamily: "monospace",
         }}
       >
-        {/* faint frame */}
         <div style={{ display: "flex", alignItems: "center", gap: 16, color: "#5ee6a8", fontSize: 30 }}>
           <span>~/</span>
           <span style={{ color: "#8a93a6" }}>ramshri@london:~$ whoami</span>
@@ -37,16 +36,16 @@ export default function OGImage() {
           </div>
           <div style={{ fontSize: 40, color: "#5ee6a8", marginTop: 14 }}>{site.role}</div>
           <div style={{ fontSize: 30, color: "#8a93a6", marginTop: 28, maxWidth: 900, lineHeight: 1.4 }}>
-            Pipelines, dashboards and models, all live and inspectable. Open to data roles.
+            Pipelines, dashboards and models, all live and inspectable. Open to Data Analyst roles.
           </div>
         </div>
 
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", fontSize: 28, color: "#8a93a6" }}>
-          <span style={{ color: "#5ee6a8" }}>{site.domain}</span>
+          <span style={{ color: "#5ee6a8" }}>{site.url.replace(/^https?:\/\//, "")}</span>
           <span>5 projects / accepted paper / First Class CS</span>
         </div>
       </div>
     ),
-    { ...size }
+    { width: 1200, height: 630 }
   );
 }

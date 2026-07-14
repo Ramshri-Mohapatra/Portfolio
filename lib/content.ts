@@ -6,20 +6,27 @@
 // so public-folder references (CV, screenshots) must add this themselves.
 const base = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
+// Where the site is actually served from. Canonical URL, OG tags and the
+// sitemap all derive from this, so they can never drift from reality. It is a
+// GitHub project page, hence the origin plus the /Portfolio base path above.
+// If a custom domain is ever registered and pointed here, change these two.
+const origin = "https://ramshri-mohapatra.github.io";
+
 export const site = {
   name: "Ramshri Mohapatra",
-  role: "Data Analyst & Engineer",
+  role: "Data Analyst",
   location: "London, UK",
   email: "rskissan1729@gmail.com",
   github: "https://github.com/Ramshri-Mohapatra",
   linkedin: "https://www.linkedin.com/in/ramshri-mohapatra",
   cv: `${base}/CV.pdf`,
-  domain: "ramshri.dev",
+  origin,
+  url: `${origin}${base}`,
   // The spine sentence — his own words, lightly trimmed.
   tagline:
     "I turn messy, real-world data into decisions people can act on. I've built the pipelines, dashboards, and models to back that up.",
   heroMicro:
-    "First-Class CS grad. Five projects shipped and live. Open to full-time data roles.",
+    "First-Class CS grad. Five projects shipped and live. Open to full-time Data Analyst roles.",
 };
 
 export type Stat = { value: string; label: string };
@@ -222,7 +229,7 @@ export const education = {
 
 export const contact = {
   headline:
-    "Open to full-time Data Analyst and Data Engineer roles.",
+    "Open to full-time Data Analyst roles.",
   body:
     "Right to work, no restrictions, available immediately. If your team's problems line up with what I've built, let's talk.",
 };

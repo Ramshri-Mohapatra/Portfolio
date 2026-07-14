@@ -1,7 +1,8 @@
 /** @type {import('next').NextConfig} */
 
-// For a custom domain (ramshri.dev) leave NEXT_PUBLIC_BASE_PATH empty.
-// For a GitHub *project* page (username.github.io/<repo>) set it to "/<repo>".
+// For a GitHub *project* page (username.github.io/<repo>) set this to "/<repo>".
+// For a custom domain served at the root, leave it empty — and update `origin`
+// in lib/content.ts to match, or the metadata will lie about where it lives.
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
 const nextConfig = {
