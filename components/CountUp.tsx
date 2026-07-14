@@ -11,7 +11,11 @@ import { useInView, useReducedMotion } from "framer-motion";
  */
 export function CountUp({ value, className }: { value: string; className?: string }) {
   const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-40px" });
+  // Vertical margin only. A bare "-40px" also insets the root's LEFT edge by
+  // 40px, and the page gutter on a phone is 20px — so a narrow, left-aligned
+  // number (like the "0" this starts at) sits entirely outside the shrunk root,
+  // never intersects, and never counts up.
+  const inView = useInView(ref, { once: true, margin: "0px 0px -40px 0px" });
   const reduce = useReducedMotion();
 
   // Parse once per value; stable across re-renders so the effect below

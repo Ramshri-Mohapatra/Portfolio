@@ -40,7 +40,9 @@ export function ProjectEntry({ project }: { project: Project }) {
       <div className="grid gap-6 md:grid-cols-[8.5rem_1fr] md:gap-10">
         {/* meta column */}
         <div className="flex items-baseline gap-4 md:flex-col md:items-start md:gap-2">
-          <span className="font-display text-5xl font-semibold leading-none text-border transition-colors duration-300 group-hover:text-accent md:text-6xl">
+          {/* accent on hover, but a touchscreen never hovers — so on those it just
+              renders accent rather than sitting there as unreadable border-grey */}
+          <span className="font-display text-5xl font-semibold leading-none text-border transition-colors duration-300 group-hover:text-accent md:text-6xl [@media(hover:none)]:text-accent">
             {project.index}
           </span>
           <div className="md:mt-3">

@@ -18,12 +18,16 @@ export function Reveal({ children, className, delay = 0, as = "div" }: RevealPro
   const reduce = useReducedMotion();
   const MotionTag = motion[as];
 
+  // Vertical margin only: a bare "-80px" would also inset the root's LEFT edge,
+  // which can stop narrow content near the page gutter from ever revealing.
+  const viewport = { once: true, margin: "0px 0px -80px 0px" } as const;
+
   return (
     <MotionTag
       className={className}
       initial={reduce ? { opacity: 0 } : { opacity: 0, y: 22 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
+      viewport={viewport}
       transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay }}
     >
       {children}
