@@ -76,7 +76,7 @@ export function Terminal() {
       </div>
 
       {/* body */}
-      <div className="space-y-1.5 p-5 font-mono text-sm leading-relaxed sm:p-6">
+      <div className="space-y-1.5 p-4 font-mono text-[0.8rem] leading-relaxed sm:p-6 sm:text-sm">
         <div>
           <span className="text-accent">ramshri@london</span>
           <span className="text-muted">:</span>
@@ -97,9 +97,10 @@ export function Terminal() {
                 className={line.accent ? "text-base font-medium text-accent sm:text-lg" : "text-text/85"}
               >
                 {line.k ? (
-                  <span className="flex gap-3">
-                    <span className="w-16 shrink-0 text-muted">{line.k}</span>
-                    <span>{line.v}</span>
+                  <span className="flex gap-2 sm:gap-3">
+                    <span className="w-14 shrink-0 text-muted sm:w-16">{line.k}</span>
+                    {/* min-w-0 lets the value wrap instead of being clipped by the card */}
+                    <span className="min-w-0 break-words">{line.v}</span>
                   </span>
                 ) : (
                   line.v

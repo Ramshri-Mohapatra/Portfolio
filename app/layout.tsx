@@ -89,11 +89,14 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
-        {/* Set the theme before first paint so there is no flash. */}
+        {/* Set the theme before first paint so there is no flash, and stamp a
+            matching theme-color so mobile browser chrome doesn't land on white.
+            Not declared via Next's `viewport` export: that only keys off the OS
+            colour scheme, and this site's theme is our own attribute. */}
         <script
           dangerouslySetInnerHTML={{
             __html:
-              "try{var t=localStorage.getItem('theme');document.documentElement.setAttribute('data-theme',t==='light'?'light':'dark');}catch(e){}",
+              "try{var t=localStorage.getItem('theme');var d=t==='light'?'light':'dark';document.documentElement.setAttribute('data-theme',d);var m=document.createElement('meta');m.name='theme-color';m.content=d==='light'?'#f7f5f8':'#0b0e14';document.head.appendChild(m);}catch(e){}",
           }}
         />
       </head>

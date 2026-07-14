@@ -108,7 +108,7 @@ export function ProjectEntry({ project }: { project: Project }) {
               href={project.live}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 rounded-md bg-accent px-4 py-2 font-mono text-sm font-medium text-bg transition-transform hover:-translate-y-0.5"
+              className="inline-flex items-center gap-1.5 rounded-md bg-accent px-4 py-3 font-mono text-sm font-medium text-bg transition-transform hover:-translate-y-0.5 active:scale-[0.98]"
             >
               Live <ArrowUpRight className="h-4 w-4" />
             </a>
@@ -117,7 +117,7 @@ export function ProjectEntry({ project }: { project: Project }) {
             href={project.code}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 rounded-md border border-border px-4 py-2 font-mono text-sm text-text transition-colors hover:border-accent/50 hover:text-accent"
+            className="inline-flex items-center gap-1.5 rounded-md border border-border px-4 py-3 font-mono text-sm text-text transition-colors hover:border-accent/50 hover:text-accent active:scale-[0.98]"
           >
             Code <ArrowUpRight className="h-4 w-4" />
           </a>

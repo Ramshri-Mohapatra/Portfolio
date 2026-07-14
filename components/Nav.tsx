@@ -42,7 +42,8 @@ export function Nav() {
       }`}
     >
       <nav className="container-p flex h-16 items-center justify-between">
-        <a href="#top" className="font-mono text-sm text-text">
+        {/* negative margin keeps the logo visually put while giving it a real tap target */}
+        <a href="#top" className="-m-2 p-2 font-mono text-sm text-text">
           <span className="text-accent">~/</span>ramshri
         </a>
 
@@ -82,7 +83,7 @@ export function Nav() {
           <ThemeToggle />
           <button
             onClick={() => setOpen((o) => !o)}
-            className="flex h-10 w-10 items-center justify-center rounded-md text-muted"
+            className="flex h-11 w-11 items-center justify-center rounded-md text-muted"
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
           >
@@ -104,7 +105,7 @@ export function Nav() {
                 key={item.href}
                 href={item.href}
                 onClick={() => setOpen(false)}
-                className="py-3 font-mono text-base text-muted"
+                className="border-b border-border/50 py-3.5 font-mono text-base text-muted last:border-b-0"
               >
                 {item.label}
               </a>
@@ -113,7 +114,7 @@ export function Nav() {
               href={site.cv}
               download
               onClick={() => setOpen(false)}
-              className="mt-2 inline-flex w-fit items-center gap-1.5 rounded-md border border-accent/40 px-3 py-2 font-mono text-sm text-accent"
+              className="mt-4 inline-flex w-fit items-center gap-1.5 rounded-md border border-accent/40 px-4 py-2.5 font-mono text-sm text-accent"
             >
               Download CV <ArrowDown className="h-3.5 w-3.5" />
             </a>

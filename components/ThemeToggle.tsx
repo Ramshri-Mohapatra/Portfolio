@@ -23,6 +23,10 @@ export function ThemeToggle({ className }: { className?: string }) {
   function toggle() {
     const next: Theme = theme === "dark" ? "light" : "dark";
     document.documentElement.setAttribute("data-theme", next);
+    // keep the mobile browser chrome (status bar / address bar) in step
+    document
+      .querySelector('meta[name="theme-color"]')
+      ?.setAttribute("content", next === "light" ? "#f7f5f8" : "#0b0e14");
     try {
       localStorage.setItem("theme", next);
     } catch {}
@@ -33,7 +37,7 @@ export function ThemeToggle({ className }: { className?: string }) {
     <button
       onClick={toggle}
       aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} theme`}
-      className={`flex h-9 w-9 items-center justify-center rounded-md text-muted transition-colors hover:bg-surface hover:text-accent ${className ?? ""}`}
+      className={`flex h-11 w-11 items-center justify-center rounded-md text-muted transition-colors hover:bg-surface hover:text-accent md:h-10 md:w-10 ${className ?? ""}`}
     >
       {/* render nothing theme-specific until mounted to avoid mismatch */}
       {mounted && (theme === "dark" ? <SunIcon className="h-[18px] w-[18px]" /> : <MoonIcon className="h-[18px] w-[18px]" />)}

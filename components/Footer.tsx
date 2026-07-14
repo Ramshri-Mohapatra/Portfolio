@@ -14,7 +14,7 @@ export function Footer() {
           </p>
         </div>
         <div className="flex items-center gap-4 font-mono text-xs text-muted">
-          <a href="#top" className="transition-colors hover:text-accent">
+          <a href="#top" className="-my-2 py-2 transition-colors hover:text-accent">
             back to top ↑
           </a>
           <span className="text-muted/50">© {year}</span>

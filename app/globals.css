@@ -38,6 +38,11 @@
     scroll-padding-top: 6rem;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+    /* stop iOS Safari inflating body text when the phone is turned landscape */
+    -webkit-text-size-adjust: 100%;
+    /* safety net against a stray wide child causing sideways scroll on a phone.
+       `clip` rather than `hidden`, which would break position: sticky. */
+    overflow-x: clip;
   }
 
   body {
@@ -100,6 +105,19 @@
 }
 
 @layer components {
+  /* Hero height. `vh` on a phone measures the viewport with the URL bar hidden,
+     so the hero gets cropped until you scroll; `svh` measures the small (bar
+     visible) viewport, which is the one you actually land on. */
+  .hero-min-h {
+    min-height: 92vh;
+  }
+
+  @supports (min-height: 100svh) {
+    .hero-min-h {
+      min-height: 92svh;
+    }
+  }
+
   .section-pad {
     padding-top: clamp(5rem, 12vh, 9rem);
     padding-bottom: clamp(5rem, 12vh, 9rem);

@@ -18,8 +18,10 @@ export function Hero() {
   };
 
   return (
-    <section id="top" className="relative flex min-h-[92vh] items-center">
-      <div className="container-p grid w-full items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
+    // pt on small screens clears the fixed nav: below lg the content is taller
+    // than the min-height, so `items-center` gives it no offset of its own.
+    <section id="top" className="hero-min-h relative flex items-center pb-20 pt-28 lg:py-0">
+      <div className="container-p grid w-full items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
         {/* left: intro */}
         <motion.div variants={container} initial="hidden" animate="show">
           <motion.h1
@@ -53,19 +55,19 @@ export function Hero() {
           <motion.div variants={item} className="mt-9 flex flex-wrap items-center gap-3">
             <a
               href="#work"
-              className="inline-flex items-center gap-2 rounded-md bg-accent px-5 py-2.5 font-mono text-sm font-medium text-bg transition-transform hover:-translate-y-0.5"
+              className="inline-flex items-center gap-2 rounded-md bg-accent px-5 py-3 font-mono text-sm font-medium text-bg transition-transform hover:-translate-y-0.5 active:scale-[0.98]"
             >
               See the work <ArrowDown className="h-4 w-4" />
             </a>
             <a
               href={site.cv}
               download
-              className="inline-flex items-center gap-2 rounded-md border border-border px-5 py-2.5 font-mono text-sm text-text transition-colors hover:border-accent/50 hover:text-accent"
+              className="inline-flex items-center gap-2 rounded-md border border-border px-5 py-3 font-mono text-sm text-text transition-colors hover:border-accent/50 hover:text-accent active:scale-[0.98]"
             >
               Download CV
             </a>
 
-            <div className="ml-1 flex items-center gap-1">
+            <div className="flex items-center gap-1 sm:ml-1">
               <IconLink href={site.github} label="GitHub"><GitHubIcon className="h-5 w-5" /></IconLink>
               <IconLink href={site.linkedin} label="LinkedIn"><LinkedInIcon className="h-5 w-5" /></IconLink>
               <IconLink href={`mailto:${site.email}`} label="Email"><MailIcon className="h-5 w-5" /></IconLink>
@@ -79,8 +81,8 @@ export function Hero() {
         </div>
       </div>
 
-      {/* scroll hint */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-8 flex justify-center">
+      {/* scroll hint — hidden below lg, where it would sit on top of the terminal */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-8 hidden justify-center lg:flex">
         <span className="font-mono text-xs text-muted/60">scroll ↓</span>
       </div>
     </section>
@@ -94,7 +96,7 @@ function IconLink({ href, label, children }: { href: string; label: string; chil
       href={href}
       aria-label={label}
       {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-      className="flex h-10 w-10 items-center justify-center rounded-md text-muted transition-colors hover:bg-surface hover:text-accent"
+      className="flex h-11 w-11 items-center justify-center rounded-md text-muted transition-colors hover:bg-surface hover:text-accent"
     >
       {children}
     </a>
