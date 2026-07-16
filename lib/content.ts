@@ -29,6 +29,12 @@ export const site = {
     "First-Class CS grad. Five projects shipped and live. Open to full-time Data Analyst roles.",
 };
 
+// Every live demo runs on a free tier that sleeps when idle (Render, Streamlit
+// Community Cloud). Said up front so a slow first load reads as free hosting
+// rather than a dead link.
+export const liveNote =
+  "The live apps are on free hosting, so they sleep when nobody's using them. Give the first load up to a minute — it's waking up, not broken.";
+
 export type Stat = { value: string; label: string };
 
 export type Project = {
@@ -68,7 +74,7 @@ export const featuredProjects: Project[] = [
     ],
     note: "Built to show I can ship the kind of backend Monzo, Wise or Revolut run on.",
     stack: ["FastAPI", "PostgreSQL", "SQLAlchemy", "Alembic", "JWT", "Docker", "CI/CD"],
-    live: "https://fintech-api-production-bbd9.up.railway.app/docs",
+    live: "https://fintech-api-n3ds.onrender.com/docs",
     code: "https://github.com/Ramshri-Mohapatra/fintech-api",
     image: `${base}/fintechapi.png`,
   },

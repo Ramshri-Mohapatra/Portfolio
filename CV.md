@@ -24,12 +24,12 @@ First-class Computer Science graduate from City, University of London, with hand
 
 ## Projects
 
-### Fintech Backend API | Live: https://fintech-api-production-bbd9.up.railway.app/docs | GitHub: https://github.com/Ramshri-Mohapatra/fintech-api
+### Fintech Backend API | Live: https://fintech-api-n3ds.onrender.com/docs | GitHub: https://github.com/Ramshri-Mohapatra/fintech-api
 *2026*
 
 - Built a production-grade personal finance tracker REST API with JWT authentication (bcrypt password hashing, python-jose token generation/verification) and full CRUD for transactions with strict per-user data isolation enforced at the query level.
 - Designed relational schema with SQLAlchemy ORM over PostgreSQL; wrote 12 automated tests using pytest against an isolated SQLite test database with conftest.py fixtures, covering auth, authorization failures, and cross-user data isolation.
-- Containerised with Docker and docker-compose; built a GitHub Actions CI pipeline running the full test suite on every push; deployed to Railway with environment-based secret management.
+- Containerised with Docker and docker-compose; built a GitHub Actions CI pipeline running the full test suite on every push; deployed with environment-based secret management — initially on Railway, then redeployed to Render.
 
 ### Containerised REST API | Live: https://task-api-latest-ljxo.onrender.com/docs | GitHub: https://github.com/Ramshri-Mohapatra/Containerised-API-Deployment-Project
 *2026*

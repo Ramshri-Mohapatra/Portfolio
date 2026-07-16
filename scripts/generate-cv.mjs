@@ -77,7 +77,7 @@ const projects = [
     b: [
       "Production-grade personal finance REST API with JWT auth (bcrypt, python-jose) and full CRUD with strict per-user data isolation enforced at the query level.",
       "Relational schema in SQLAlchemy over PostgreSQL; 12 pytest tests against an isolated SQLite DB covering auth, authorization failures and cross-user isolation.",
-      "Containerised with Docker; GitHub Actions CI runs the full suite on every push; deployed to Railway with environment-based secrets.",
+      "Containerised with Docker; GitHub Actions CI runs the full suite on every push; deployed with environment-based secrets — initially on Railway, then redeployed to Render.",
     ],
   },
   {

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { featuredProjects } from "@/lib/content";
+import { featuredProjects, liveNote } from "@/lib/content";
 import { ProjectEntry } from "./ProjectEntry";
 import { SectionHeading } from "./SectionHeading";
 
@@ -13,6 +13,7 @@ export function SelectedWork() {
           eyebrow="selected work"
           title="Five things I built and put in the world."
           intro="Most of this shipped in 2026. Every one is live or open, so don't take my word for it, click in and poke at it. Newest first."
+          note={liveNote}
         />
 
         <motion.div

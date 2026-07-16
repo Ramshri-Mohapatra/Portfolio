@@ -4,10 +4,12 @@ export function SectionHeading({
   eyebrow,
   title,
   intro,
+  note,
 }: {
   eyebrow: string;
   title: string;
   intro?: string;
+  note?: string; // honest aside, rendered as a // comment
 }) {
   return (
     <Reveal className="mb-12 max-w-2xl">
@@ -16,6 +18,12 @@ export function SectionHeading({
         {title}
       </h2>
       {intro && <p className="mt-4 text-base leading-relaxed text-muted">{intro}</p>}
+      {note && (
+        <p className="mt-4 font-mono text-sm leading-relaxed text-muted/80">
+          <span className="text-accent">// </span>
+          {note}
+        </p>
+      )}
     </Reveal>
   );
 }
