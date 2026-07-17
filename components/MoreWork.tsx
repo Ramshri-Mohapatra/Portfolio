@@ -7,10 +7,10 @@ export function MoreWork() {
     <section className="section-pad pt-0">
       <div className="container-p">
         <Reveal className="mb-8">
-          <p className="eyebrow">// two more, in brief</p>
+          <p className="eyebrow">// three more, in brief</p>
         </Reveal>
 
-        <div className="grid gap-x-10 gap-y-4 sm:grid-cols-2">
+        <div className="grid gap-x-10 gap-y-4 sm:grid-cols-2 lg:grid-cols-3">
           {moreProjects.map((p, i) => (
             <Reveal key={p.id} delay={i * 0.05}>
               <a

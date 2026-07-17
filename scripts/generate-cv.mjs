@@ -98,9 +98,20 @@ const projects = [
   },
   {
     t: "Stock Sentiment Analysis",
-    m: "2024  |  GitHub",
+    m: "2025–2026  |  GitHub",
     b: [
-      "Processed 16 years of financial news with TF-IDF and sentiment features; compared Logistic Regression, Random Forest and SVM with GridSearchCV, reaching 56.3% directional accuracy.",
+      "Compared three NLP classifiers (BoW + Random Forest, TF-IDF + sentiment + tuned Logistic Regression, LR/RF/SVM voting ensemble) predicting stock direction from 4,101 days of headlines, with GridSearchCV tuning and chronological splits.",
+      "Found and fixed a silent split bug: an unparsed date column turned a date filter into a string comparison, shrinking the test set 378 to 126 days and inflating accuracy to 56.3% against a corrected 51.6%.",
+      "Ruled out a broken pipeline via a positive control (81.3% on a corpus with known sentiment signal) and a permutation test (the original 56.3% claim was within noise, p = 0.14).",
+    ],
+  },
+  {
+    t: "Email Spam Classification",
+    m: "2026  |  GitHub",
+    b: [
+      "Built a spam-detection pipeline over 33.7k labelled Enron emails (TF-IDF into a decision tree, linear SVM, PyTorch MLP); best model reached 98.7% accuracy, 0.987 F1, 0.999 ROC-AUC.",
+      "Audited my group's original coursework and found its labels were keyword-matched from the same text fed to the model; replaced the corpus and fixed three independent sources of train/test leakage.",
+      "Validated against an independent human-labelled mailbox: recall fell from 0.99 to 0.64 on real mail, every miss a newsletter or stock alert absent from the training spam.",
     ],
   },
 ];

@@ -49,9 +49,18 @@ First-class Computer Science graduate from City, University of London, with hand
 - Fine-tuned DeBERTa v3 (HuggingFace Transformers) for Named Entity Recognition on cybersecurity text, achieving F1-score of 66.3% after systematic hyperparameter tuning on a held-out test set. Research accepted at ICETCS and ITSS-IoE 2025; pending Springer Nature publication.
 
 ### Stock Sentiment Analysis | GitHub: https://github.com/Ramshri-Mohapatra/Stock-Sentiment-Analysis
-*2024*
+*2025–2026*
 
-- Processed 16 years of financial news data using TF-IDF and sentiment features; compared Logistic Regression, Random Forest, and SVM classifiers with GridSearchCV, reaching 56.3% directional accuracy.
+- Built and compared three NLP classifiers (bigram BoW + Random Forest, TF-IDF + sentiment + tuned Logistic Regression, hard-voting LR/RF/SVM ensemble) predicting daily stock direction from 4,101 days of headlines, with GridSearchCV tuning and strictly chronological train/test splits.
+- Found and fixed a silent train/test split defect: an unparsed date column made a date filter run as a string comparison, shrinking the test set from 378 to 126 days and inflating reported accuracy to 56.3% against a corrected 51.6%.
+- Ran a permutation test and a positive control to rule out a broken pipeline: the identical pipeline scored 81.3% on a corpus with known sentiment signal, and the original 56.3% claim fell within the range reachable by chance (p = 0.14).
+
+### Email Spam Classification | GitHub: https://github.com/Ramshri-Mohapatra/enron-spam-classification
+*2026*
+
+- Built an end-to-end spam-detection pipeline over 33.7k labelled Enron emails (TF-IDF into a decision tree, a linear SVM, and a PyTorch MLP); best model reached 98.7% accuracy, 0.987 F1, 0.999 ROC-AUC on a held-out test set.
+- Audited my university group's original coursework implementation and found its labels were keyword-matched from the same text fed to the model, so it was learning to reproduce a regular expression rather than detect spam; replaced it with a properly labelled corpus and fixed three independent sources of train/test leakage.
+- Validated against an independent human-labelled mailbox: recall fell from 0.99 to 0.64 on unseen real mail, every miss a newsletter or stock alert absent from the honeypot-derived training spam.
 
 ---
 

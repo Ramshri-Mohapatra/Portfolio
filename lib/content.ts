@@ -26,7 +26,7 @@ export const site = {
   tagline:
     "I turn messy, real-world data into decisions people can act on. I've built the pipelines, dashboards, and models to back that up.",
   heroMicro:
-    "First-Class CS grad. Five projects shipped and live. Open to full-time Data Analyst roles.",
+    "First-Class CS grad. Four projects shipped and live. Open to full-time Data Analyst roles.",
 };
 
 // Every live demo runs on a free tier that sleeps when idle (Render, Streamlit
@@ -138,11 +138,34 @@ export const moreProjects: Project[] = [
     index: "05",
     name: "Stock Sentiment Analysis",
     path: "~/stock-sentiment",
-    year: "2024",
-    tagline: "Can headlines predict the market? Barely, and that's the point.",
-    body: "Sixteen years of financial headlines run through three models: a baseline Random Forest, then TF-IDF plus sentiment logistic regression, then a tuned voting ensemble. It lands at 56.3% directional accuracy, well past the tutorial baseline it started from.",
-    stack: ["Python", "scikit-learn", "NLTK", "TF-IDF", "spaCy"],
+    year: "2025–2026",
+    recent: true,
+    tagline: "Can headlines predict the market? A split bug said yes; the honest number says no.",
+    body: "Three NLP classifiers — bigram bag-of-words with Random Forest, TF-IDF plus sentiment with a tuned Logistic Regression, and a hard-voting ensemble — predicting daily stock direction from 4,101 days of news headlines, with GridSearchCV tuning and strictly chronological splits to rule out lookahead. Revisiting it in 2026 turned up a silent bug: an unparsed date column made a date filter run as a string comparison, shrinking the test set from 378 days to 126 and inflating accuracy to 56.3%. Fixed, the real figure is 51.6% — a permutation test showed the original claim falls well within the range reachable by chance (p = 0.14).",
+    stats: [
+      { value: "51.6%", label: "corrected directional accuracy" },
+      { value: "p = 0.14", label: "permutation test on the original 56.3% claim" },
+    ],
+    note: "A positive control — the identical pipeline scoring 81.3% on a corpus with known sentiment signal — ruled out a broken pipeline as the cause. None of the three models beat a majority-class baseline once the split was fixed.",
+    stack: ["Python", "scikit-learn", "pandas", "NLTK", "TextBlob", "SciPy"],
     code: "https://github.com/Ramshri-Mohapatra/Stock-Sentiment-Analysis",
+  },
+  {
+    id: "spam-classifier",
+    index: "06",
+    name: "Email Spam Classification",
+    path: "~/spam-classifier",
+    year: "2026",
+    recent: true,
+    tagline: "Audited my own group's coursework and found the labels were fake.",
+    body: "A spam classifier over 33.7k labelled Enron emails — TF-IDF into a decision tree, a linear SVM and a PyTorch MLP — with the linear SVM reaching 98.7% accuracy and 0.987 F1. It started as an audit of my university group's original coursework: its labels were keyword-matched from the same text fed to the model, so it was learning to reproduce a regular expression, not detect spam. Replaced the corpus, fixed three separate sources of train/test leakage, then tested against an independent human-labelled mailbox: recall fell from 0.99 to 0.64 on real mail, every miss a newsletter or stock alert absent from the honeypot-derived training spam.",
+    stats: [
+      { value: "98.7%", label: "accuracy / 0.987 F1 (test set)" },
+      { value: "0.64", label: "recall on independent real mail (from 0.99)" },
+    ],
+    note: "The gap on real mail is the training distribution, not the model — no amount of tuning on the training corpus would close it. Five defects fixed in total, each pinned shut by a regression test.",
+    stack: ["Python", "scikit-learn", "PyTorch", "imbalanced-learn", "pandas"],
+    code: "https://github.com/Ramshri-Mohapatra/enron-spam-classification",
   },
 ];
 
@@ -172,13 +195,13 @@ export const funProjects = [
 
 export const story = [
   "I like data most when it's still a mess, before it's clean and before anyone's sure what it means. Plenty of people want to skip straight to the model or the dashboard. I'm happier in the middle of the pipeline, in the gap between “we have data” and “we know what to do with it.” Cleaning it, checking it's telling the truth, querying it, then explaining what I found to someone who wants the answer, not the code.",
-  "I chose data over pure software development, and over the last year I've built and shipped five projects end to end. All of them are live, and all of them are something you can click into and poke at. If I'm going to claim I can do something, I'd rather show you the running version.",
+  "I chose data over pure software development, and over the last year I've built and shipped four projects end to end. All of them are live, and all of them are something you can click into and poke at. If I'm going to claim I can do something, I'd rather show you the running version.",
   "Away from the screen I play guitar and listen to pretty much everything, I'm in the gym most days, and I still build small video games for fun. That's where the stray game repos come from. I'm a problem-solver by temperament; the moment everyone else says “this can't be done” is my favourite part. Right now most of that energy is pointed at finding the right data role.",
 ];
 
 export const storyStats = [
   { value: "First Class", label: "BSc Computer Science" },
-  { value: "5", label: "projects shipped" },
+  { value: "4", label: "projects shipped" },
   { value: "1", label: "conference paper accepted" },
   { value: "1", label: "Springer publication (in process)" },
 ];
