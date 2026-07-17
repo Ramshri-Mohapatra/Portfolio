@@ -11,7 +11,7 @@ export function SelectedWork() {
       <div className="container-p">
         <SectionHeading
           eyebrow="selected work"
-          title="Five things I built and put in the world."
+          title="Six things I built and put in the world."
           intro="Most of this shipped in 2026. Every one is live or open, so don't take my word for it, click in and poke at it. Newest first."
           note={liveNote}
         />
